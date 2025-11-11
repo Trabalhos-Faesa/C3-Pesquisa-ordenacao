@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Main {
@@ -12,5 +13,13 @@ public class Main {
         reservas.add(new Reserva("Charlie Davis", 5, 105, "2023-10-05", 30));
         reservas.add(new Reserva("Diana Evans", 6, 106, "2023-10-06", 35));
 
+    }
+
+    public static ArrayList<Reserva> montarListaReservas(LinkedList<Reserva> reservas) {
+        ArrayList<Reserva> lista = new ArrayList<>();
+        for (Reserva reserva : reservas) {
+            lista.add(reserva);
+        }
+        return lista;
     }
 }
