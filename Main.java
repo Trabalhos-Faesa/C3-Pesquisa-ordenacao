@@ -1,25 +1,67 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        LinkedList<Reserva> reservas = new LinkedList<>();
-        //TODO remover essa parte
-        //elementos para testar o funcionamento dos algoritimos
-        reservas.add(new Reserva("John Doe", 1, 101, "2023-10-01", 12));
-        reservas.add(new Reserva("Jane Smith", 2, 102, "2023-10-02", 15));
-        reservas.add(new Reserva("Alice Johnson", 3, 103, "2023-10-03", 20));
-        reservas.add(new Reserva("Bob Brown", 4, 104, "2023-10-04", 25));
-        reservas.add(new Reserva("Charlie Davis", 5, 105, "2023-10-05", 30));
-        reservas.add(new Reserva("Diana Evans", 6, 106, "2023-10-06", 35));
-
+        // Tenta carregar todas as reservas da pasta 'reservas'
+        ArrayList<Reserva> listaAlea = readAllReservas("reservas/Reserva1000alea.txt");
+        ArrayList<Reserva> listaOrd = readAllReservas("reservas/Reserva1000ord.txt");
+        ArrayList<Reserva> listaInv = readAllReservas("reservas/Reserva1000inv.txt");
     }
 
-    public static ArrayList<Reserva> montarListaReservas(LinkedList<Reserva> reservas) {
-        ArrayList<Reserva> lista = new ArrayList<>();
-        for (Reserva reserva : reservas) {
-            lista.add(reserva);
+
+    public static ArrayList<Reserva> readAllReservas(String filePath) {
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+        Path path = Paths.get(filePath);
+        try{
+            reservas.addAll(readFromFile(path));
+        }catch(IOException e){
+            System.out.println("Erro ao ler o arquivo: " + path);
         }
-        return lista;
+        return reservas;
+    }
+
+    public static ArrayList<Reserva> readFromFile(Path file) throws IOException {
+        ArrayList<Reserva> list = new ArrayList<>();
+        String line;
+        BufferedReader conteudo = Files.newBufferedReader(file, StandardCharsets.UTF_8);
+            while ((line = conteudo.readLine()) != null) {
+                String[] parts = line.split(";");
+
+                String reservaCode = parts[0];
+                String nome = parts[1];
+                String vooCode = parts[2];
+                String data = parts[3];
+                String assento = parts[4];
+
+                list.add(new Reserva(nome, reservaCode, vooCode, data, assento));
+        }
+        return list;
+    }
+
+    public static void exibirListaReservas(ArrayList<Reserva> reservas, String nomePesquisado){
+        if(reservas.size() == 0){
+            exibirReservaAusente(nomePesquisado);
+            return;
+        }
+        for(Reserva reserva : reservas){
+            exibirReserva(reserva);
+        }
+        System.out.println("Total de reservas: " + reservas.size());
+    }
+
+    public static void exibirReserva(Reserva reserva){
+        System.out.println("Nome: " + reserva.getNome());
+        System.out.println("Reserva: " + reserva.getReserva() + " Voo: " + reserva.getCodVoo() +" Data: " + reserva.getData() + " Assento: " + reserva.getAssento());
+    }
+
+    public static void exibirReservaAusente(String nome){
+        System.out.println("Nome: " + nome);
+        System.out.println("Não tem reserva");
     }
 }
