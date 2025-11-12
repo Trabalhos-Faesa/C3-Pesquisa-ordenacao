@@ -1,0 +1,1 @@
+Arquivo placeholder: copie os dados de `ReservasOrganizadas/ABB/ABB10000ord.txt` ou gere novos dados conforme necessário.
