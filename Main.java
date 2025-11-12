@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        // Tenta carregar todas as reservas da pasta 'reservas'
         ArrayList<Reserva> listaAlea = readAllReservas("reservas/Reserva1000alea.txt");
         ArrayList<Reserva> listaOrd = readAllReservas("reservas/Reserva1000ord.txt");
         ArrayList<Reserva> listaInv = readAllReservas("reservas/Reserva1000inv.txt");
