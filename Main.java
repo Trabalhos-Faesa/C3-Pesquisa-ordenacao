@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,34 +14,44 @@ public class Main {
         ArrayList<Reserva> listaInv = readAllReservas("reservas/Reserva1000inv.txt");
     }
 
-
+    //função para ler o arquivo e retornar uma lista de Reserva recebe como parametro o caminho do arquivo
     public static ArrayList<Reserva> readAllReservas(String filePath) {
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
         Path path = Paths.get(filePath);
-        try{
-            reservas.addAll(readFromFile(path));
-        }catch(IOException e){
-            System.out.println("Erro ao ler o arquivo: " + path);
-        }
+        reservas.addAll(readFromFile(path));
         return reservas;
     }
 
-    public static ArrayList<Reserva> readFromFile(Path file) throws IOException {
+    //função que lê o arquivo e cria uma lista de Reserva n
+    public static ArrayList<Reserva> readFromFile(Path file) {
         ArrayList<Reserva> list = new ArrayList<>();
-        String line;
-        BufferedReader conteudo = Files.newBufferedReader(file, StandardCharsets.UTF_8);
-            while ((line = conteudo.readLine()) != null) {
-                String[] parts = line.split(";");
+        try {
+            BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8);
+            String line;
 
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
                 String reservaCode = parts[0];
                 String nome = parts[1];
                 String vooCode = parts[2];
                 String data = parts[3];
                 String assento = parts[4];
-
                 list.add(new Reserva(nome, reservaCode, vooCode, data, assento));
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + file);
         }
         return list;
+    }
+    
+    //função para escrever a lista de reservas em um arquivo recebe como parametros o caminho do arquivo e a lista de reservas ordenada
+    public static void writeReservasToFile(String filePath, ArrayList<Reserva> reservas) throws IOException {
+        Path path = Paths.get(filePath);
+        ArrayList<String> lines = new ArrayList<>();
+        for (Reserva r : reservas) {
+            lines.add(r.getReserva() + ";" + r.getNome() + ";" + r.getCodVoo() + ";" + r.getData() + ";" + r.getAssento());
+        }
+        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
     public static void exibirListaReservas(ArrayList<Reserva> reservas, String nomePesquisado){
