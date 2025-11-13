@@ -1,10 +1,12 @@
 public class Reserva {
     private String nome;
-    private int reserva;
-    private int codVoo;
+    private String reserva;
+    private String codVoo;
     private String data;
+    private String assento;
 
-    public Reserva(String nome, int reserva, int codVoo, String data, int assento) {
+
+    public Reserva(String nome, String reserva, String codVoo, String data, String assento) {
         this.nome = nome;
         this.reserva = reserva;
         this.codVoo = codVoo;
@@ -18,16 +20,16 @@ public class Reserva {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getReserva() {
+    public String getReserva() {
         return reserva;
     }
-    public void setReserva(int reserva) {
+    public void setReserva(String reserva) {
         this.reserva = reserva;
     }
-    public int getCodVoo() {
+    public String getCodVoo() {
         return codVoo;
     }
-    public void setCodVoo(int codVoo) {
+    public void setCodVoo(String codVoo) {
         this.codVoo = codVoo;
     }
     public String getData() {
@@ -36,11 +38,10 @@ public class Reserva {
     public void setData(String data) {
         this.data = data;
     }
-    public int getAssento() {
+    public String getAssento() {
         return assento;
     }
-    public void setAssento(int assento) {
+    public void setAssento(String assento) {
         this.assento = assento;
     }
-    private int assento;
 }
