@@ -9,20 +9,45 @@ import java.nio.file.StandardOpenOption;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Reserva> listaAlea = readAllReservas("reservas/Reserva1000alea.txt");
-        ArrayList<Reserva> listaOrd = readAllReservas("reservas/Reserva1000ord.txt");
-        ArrayList<Reserva> listaInv = readAllReservas("reservas/Reserva1000inv.txt");
+        ArrayList<Reserva> lista1kAlea = readAllReservas("reservas/Reserva1000alea.txt");
+        ArrayList<Reserva> lista1kOrd = readAllReservas("reservas/Reserva1000ord.txt");
+        ArrayList<Reserva> lista1kInv = readAllReservas("reservas/Reserva1000inv.txt");
+
+        ArrayList<Reserva> lista5kInv = readAllReservas("reservas/Reserva5000inv.txt");
+        ArrayList<Reserva> lista5kAlea = readAllReservas("reservas/Reserva5000alea.txt");
+        ArrayList<Reserva> lista5kOrd = readAllReservas("reservas/Reserva5000ord.txt");
+
+        ArrayList<Reserva> lista10kInv = readAllReservas("reservas/Reserva10000inv.txt");
+        ArrayList<Reserva> lista10kAlea = readAllReservas("reservas/Reserva10000alea.txt");
+        ArrayList<Reserva> lista10kOrd = readAllReservas("reservas/Reserva10000ord.txt");
+
+        ArrayList<Reserva> lista50kInv = readAllReservas("reservas/Reserva50000inv.txt");
+        ArrayList<Reserva> lista50kAlea = readAllReservas("reservas/Reserva50000alea.txt");
+        ArrayList<Reserva> lista50kOrd = readAllReservas("reservas/Reserva50000ord.txt");
+        ArrayList<String> nomes = readNames();
+
+        //Questão 4
+        realizarQuestao4(lista1kAlea, "ReservasOrganizadas/ABB/ABB1000alea.txt", nomes);
+        realizarQuestao4(lista1kOrd, "ReservasOrganizadas/ABB/ABB1000ord.txt", nomes);
+        realizarQuestao4(lista1kInv, "ReservasOrganizadas/ABB/ABB1000inv.txt", nomes);
+
+        realizarQuestao4(lista5kAlea, "ReservasOrganizadas/ABB/ABB5000alea.txt", nomes);
+        realizarQuestao4(lista5kOrd, "ReservasOrganizadas/ABB/ABB5000ord.txt", nomes);
+        realizarQuestao4(lista5kInv, "ReservasOrganizadas/ABB/ABB5000inv.txt", nomes);
     }
 
-    //função para ler o arquivo e retornar uma lista de Reserva recebe como parametro o caminho do arquivo
-    public static ArrayList<Reserva> readAllReservas(String filePath) {
+    //Metodos de sobreescrever arquivos: 
+
+    // função para ler o arquivo e retornar uma lista de Reserva recebe como
+    // parametro o caminho do arquivo
+    public static ArrayList<Reserva> readAllReservas(String arquivoOrigem) {
         ArrayList<Reserva> reservas = new ArrayList<Reserva>();
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(arquivoOrigem);
         reservas.addAll(readFromFile(path));
         return reservas;
     }
 
-    //função que lê o arquivo e cria uma lista de Reserva n
+    // função que lê o arquivo e cria uma lista de Reserva n
     public static ArrayList<Reserva> readFromFile(Path file) {
         ArrayList<Reserva> list = new ArrayList<>();
         try {
@@ -38,40 +63,114 @@ public class Main {
                 String assento = parts[4];
                 list.add(new Reserva(nome, reservaCode, vooCode, data, assento));
             }
-        } catch (IOException e) {
+        } catch (IOException e) {//colocando para o java não reclamar
             System.out.println("Erro ao ler o arquivo: " + file);
         }
         return list;
     }
-    
-    //função para escrever a lista de reservas em um arquivo recebe como parametros o caminho do arquivo e a lista de reservas ordenada
-    public static void writeReservasToFile(String filePath, ArrayList<Reserva> reservas) throws IOException {
-        Path path = Paths.get(filePath);
+
+    public static ArrayList<String> readNames(){
+        ArrayList<String> list = new ArrayList<String>();
+        Path path = Paths.get("reservas/nome.txt");
+        try{
+            BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                list.add(line.trim());
+            }
+        } catch (IOException e) {//colocando para o java não reclamar
+            System.out.println("Erro ao ler o arquivo: " + path);
+        }
+
+        return list;
+    }
+
+    // função para escrever, conforme padronizado no arquivo
+   public static void writeReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
+        if (reservas == null || reservas.isEmpty()) {
+            return; 
+        }
+
+        Path path = Paths.get(arquivoDestino);
         ArrayList<String> lines = new ArrayList<>();
+
+        lines.add("\n---------------------------");
+        lines.add("NOME: " + reservas.get(0).getNome());
+        
         for (Reserva r : reservas) {
-            lines.add(r.getReserva() + ";" + r.getNome() + ";" + r.getCodVoo() + ";" + r.getData() + ";" + r.getAssento());
+            lines.add("Reserva: " + r.getCodReserva() + " Voo: " + r.getCodVoo() + " Data: " + r.getData() + " Assento: " + r.getAssento());
         }
-        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        lines.add("Total: " + reservas.size() + " reserva(s) adicionada(s)");
+
+        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND); 
     }
 
-    public static void exibirListaReservas(ArrayList<Reserva> reservas, String nomePesquisado){
-        if(reservas.size() == 0){
-            exibirReservaAusente(nomePesquisado);
-            return;
+    //cuidado para não passar o path de um arquivo na pasta reservas
+    public static void cleanFile(String arquivoDestino){
+        Path path = Paths.get(arquivoDestino);
+        try{
+            Files.write(path, new byte[0], StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        }catch(IOException e){
+
         }
-        for(Reserva reserva : reservas){
-            exibirReserva(reserva);
-        }
-        System.out.println("Total de reservas: " + reservas.size());
     }
 
-    public static void exibirReserva(Reserva reserva){
+    public static void exibirReserva(Reserva reserva) {
         System.out.println("Nome: " + reserva.getNome());
-        System.out.println("Reserva: " + reserva.getReserva() + " Voo: " + reserva.getCodVoo() +" Data: " + reserva.getData() + " Assento: " + reserva.getAssento());
+        System.out.println("Reserva: " + reserva.getCodReserva() + " Voo: " + reserva.getCodVoo() + " Data: "
+                + reserva.getData() + " Assento: " + reserva.getAssento());
     }
 
-    public static void exibirReservaAusente(String nome){
+    public static void exibirReservaAusente(String nome) {
         System.out.println("Nome: " + nome);
         System.out.println("Não tem reserva");
     }
+
+    //Questão 4
+    public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        for(int i = 0; i < 5; i++){
+            pesquisaABB(data, caminhoDestino, nomesPesquisa);
+            if(i != 4){
+                cleanFile(caminhoDestino);
+            }
+        }
+    }
+
+
+    public static void pesquisaABB(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        ABB arvoreAbb = montaABB(data);
+        ArrayList<ArrayList<Reserva>> clientes = pesquisaABB(nomesPesquisa, arvoreAbb);
+
+        for(ArrayList<Reserva> reservasCliente: clientes){//adiciona um por um os clientes e suas reservas segundo padronizado no documento
+            try{
+                writeReservasToFile(caminhoDestino, reservasCliente);
+            }catch(IOException e){//colocando para o java não reclamar
+
+            }
+        }
+    }
+
+    public static ABB montaABB(ArrayList<Reserva> reservas) {
+        ABB arvore = new ABB();
+
+        for (Reserva reserva : reservas) {
+            arvore.inserir(reserva);
+        }
+        
+        arvore.balancear();
+        return arvore;
+    }
+
+    public static ArrayList<ArrayList<Reserva>> pesquisaABB(ArrayList<String> clientes, ABB arv){
+        ArrayList<ArrayList<Reserva>> clientesEncontrados = new ArrayList<>();
+        for(String cliente: clientes){
+            ArrayList<Reserva> reservasCliente = new ArrayList<>();
+            reservasCliente = arv.pesquisarNome(cliente);
+            if(reservasCliente.size() > 0){
+                clientesEncontrados.add(reservasCliente);
+            }
+        }
+        return clientesEncontrados;
+    }
+
 }

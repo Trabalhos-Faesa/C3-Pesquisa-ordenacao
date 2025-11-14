@@ -1,13 +1,22 @@
 public class NoArv {
     private Reserva reserva;
-    private NoArv proximo;
+    private NoArv esq;
+    private NoArv dir;
 
-    public NoArv getProximo() {
-        return proximo;
+    public NoArv getDir() {
+        return dir;
     }
 
-    public void setProximo(NoArv proximo) {
-        this.proximo = proximo;
+    public void setDir(NoArv dir) {
+        this.dir = dir;
+    }
+
+    public NoArv getEsq() {
+        return esq;
+    }
+
+    public void setEsq(NoArv proximo) {
+        this.esq = proximo;
     }
 
     public NoArv(Reserva reserva) {
