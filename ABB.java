@@ -12,8 +12,7 @@ public class ABB {
         return this.raiz;
     }
 
-    // pesquisa pelo codigo da reserva, a arvore será organizada pelo codigo da
-    // reserva por ele ser unico.
+    // pesquisa pelo codigo da reserva, a arvore será organizada pelo codigo da reserva (por ele ser unico).
     public NoArv pesquisarReserva(Reserva reserva) {
         return pesquisarReserva(raiz, reserva);
     }
@@ -32,23 +31,23 @@ public class ABB {
     }
 
     // Pesquisa pelo nome da reserva
-    public NoArv pesquisarNome(Reserva reserva) {
-        return pesquisarNome(raiz, reserva);
+    public ArrayList<Reserva> pesquisarNome(String nome) {
+        ArrayList<Reserva> reservas = new ArrayList<>();
+        return pesquisarNome(this.raiz, nome, reservas);
     }
 
-    private NoArv pesquisarNome(NoArv no, Reserva reserva) {
-        if (no == null) {
-            return null;
+    private ArrayList<Reserva> pesquisarNome(NoArv no, String nome, ArrayList<Reserva> reservas) {
+        if (no != null) {
+            pesquisarNome(no.getEsq(), nome, reservas);
+
+            if (no.getReserva().getNome().equals(nome)) {
+               reservas.add(no.getReserva()); 
+            }
+            
+            pesquisarNome(no.getDir(), nome, reservas);
         }
-        if (no.getReserva().getNome().equals(reserva.getNome())) {
-            return no;
-        }
-        if (no.getReserva().getCodReserva().compareTo(reserva.getCodReserva()) > 0) {// navega usando como base a
-                                                                                     // reserva pois a arvore é ordenada
-                                                                                     // pela mesma
-            return pesquisarNome(no.getDir(), reserva);
-        }
-        return pesquisarNome(no.getEsq(), reserva);
+
+        return reservas;
     }
 
     public boolean inserir(Reserva reserva) {
@@ -66,11 +65,11 @@ public class ABB {
             NoArv novo = new NoArv(reserva);
             return novo;
         }
-        if (reserva.getCodReserva().compareTo(no.getReserva().getCodReserva()) > 0){
-            no.setDir(inserir(no.getDir(), reserva));
-        }else if(reserva.getCodReserva().compareTo(no.getReserva().getCodReserva()) < 0){
+        if(reserva.getCodReserva().compareTo(no.getReserva().getCodReserva()) < 0){
             no.setEsq(inserir(no.getEsq(), reserva));
-        }
+        }else if(reserva.getCodReserva().compareTo(no.getReserva().getCodReserva()) > 0){
+            no.setDir(inserir(no.getDir(), reserva));
+        } 
         return no;
     }
 
@@ -82,9 +81,9 @@ public class ABB {
 
     private ArrayList<Reserva> fazCamCentral(NoArv no, ArrayList<Reserva> vetor){
         if(no != null){
-            vetor = this.fazCamCentral(no.getDir(), vetor);
-            vetor.add(no.getReserva());
             vetor = this.fazCamCentral(no.getEsq(), vetor);
+            vetor.add(no.getReserva());
+            vetor = this.fazCamCentral(no.getDir(), vetor);
         }
         return vetor;
     }
