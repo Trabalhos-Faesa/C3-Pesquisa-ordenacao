@@ -30,10 +30,18 @@ public class Main {
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/ABB/ABB1000alea.txt", nomes);
         realizarQuestao4(lista1kOrd, "ReservasOrganizadas/ABB/ABB1000ord.txt", nomes);
         realizarQuestao4(lista1kInv, "ReservasOrganizadas/ABB/ABB1000inv.txt", nomes);
-
+        
         realizarQuestao4(lista5kAlea, "ReservasOrganizadas/ABB/ABB5000alea.txt", nomes);
         realizarQuestao4(lista5kOrd, "ReservasOrganizadas/ABB/ABB5000ord.txt", nomes);
         realizarQuestao4(lista5kInv, "ReservasOrganizadas/ABB/ABB5000inv.txt", nomes);
+        
+        realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt", nomes);
+        realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt", nomes);
+        realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt", nomes);
+        
+        realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt", nomes);
+        realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
+        realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
     }
 
     //Metodos de sobreescrever arquivos: 
@@ -110,7 +118,7 @@ public class Main {
         Path path = Paths.get(arquivoDestino);
         try{
             Files.write(path, new byte[0], StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-        }catch(IOException e){
+        }catch(IOException e){//colocando para o java não reclamar
 
         }
     }
@@ -130,7 +138,7 @@ public class Main {
     public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
         for(int i = 0; i < 5; i++){
             pesquisaABB(data, caminhoDestino, nomesPesquisa);
-            if(i != 4){
+            if(i != 4){//caso queira testar 
                 cleanFile(caminhoDestino);
             }
         }
