@@ -42,6 +42,24 @@ public class Main {
         realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt", nomes);
         realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
         realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
+        
+        //Questão 5
+        realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
+        realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
+        realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
+        
+        realizarQuestao4(lista5kAlea, "ReservasOrganizadas/AVL/AVL5000alea.txt", nomes);
+        realizarQuestao4(lista5kOrd, "ReservasOrganizadas/AVL/AVL5000ord.txt", nomes);
+        realizarQuestao4(lista5kInv, "ReservasOrganizadas/AVL/AVL5000inv.txt", nomes);
+        
+        realizarQuestao4(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt", nomes);
+        realizarQuestao4(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt", nomes);
+        realizarQuestao4(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt", nomes);
+
+        realizarQuestao4(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt", nomes);
+        realizarQuestao4(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt", nomes);
+        realizarQuestao4(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt", nomes);
+        
     }
 
     //Metodos de sobreescrever arquivos: 
@@ -136,8 +154,10 @@ public class Main {
 
     //Questão 4
     public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        ABB arvoreAbb = montaABB(data);
+
         for(int i = 0; i < 5; i++){
-            pesquisaABB(data, caminhoDestino, nomesPesquisa);
+            pesquisaABB(data, caminhoDestino, nomesPesquisa, arvoreAbb);
             if(i != 4){//caso queira testar 
                 cleanFile(caminhoDestino);
             }
@@ -145,8 +165,7 @@ public class Main {
     }
 
 
-    public static void pesquisaABB(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
-        ABB arvoreAbb = montaABB(data);
+    public static void pesquisaABB(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa, ABB arvoreAbb){
         ArrayList<ArrayList<Reserva>> clientes = pesquisaABB(nomesPesquisa, arvoreAbb);
 
         for(ArrayList<Reserva> reservasCliente: clientes){//adiciona um por um os clientes e suas reservas segundo padronizado no documento
@@ -181,4 +200,53 @@ public class Main {
         return clientesEncontrados;
     }
 
+    //Questão 5
+
+    public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        ABB arvoreAbb = montaABB(data);
+
+        for(int i = 0; i < 5; i++){
+            pesquisaAVL(data, caminhoDestino, nomesPesquisa, arvoreAbb);
+            if(i != 4){//caso queira testar 
+                cleanFile(caminhoDestino);
+            }
+        }
+    }
+
+
+    public static void pesquisaAVL(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa, ABB arvoreAbb){
+        ArrayList<ArrayList<Reserva>> clientes = pesquisaABB(nomesPesquisa, arvoreAbb);
+
+        for(ArrayList<Reserva> reservasCliente: clientes){//adiciona um por um os clientes e suas reservas segundo padronizado no documento
+            try{
+                writeReservasToFile(caminhoDestino, reservasCliente);
+            }catch(IOException e){//colocando para o java não reclamar
+
+            }
+        }
+    }
+
+    public static AVL montaAVL(ArrayList<Reserva> reservas) {
+        AVL arvore = new AVL();
+
+        for (Reserva reserva : reservas) {
+            arvore.inserir(reserva);
+        }
+        
+        return arvore;
+    }
+
+    public static ArrayList<ArrayList<Reserva>> pesquisaAVL(ArrayList<String> clientes, ABB arv){
+        ArrayList<ArrayList<Reserva>> clientesEncontrados = new ArrayList<>();
+        for(String cliente: clientes){
+            ArrayList<Reserva> reservasCliente = new ArrayList<>();
+            reservasCliente = arv.pesquisarNome(cliente);
+
+            if(reservasCliente.size() > 0){
+                clientesEncontrados.add(reservasCliente);
+            }
+        }
+
+        return clientesEncontrados;
+    }
 }
