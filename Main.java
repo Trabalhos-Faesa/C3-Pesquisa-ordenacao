@@ -34,17 +34,36 @@ public class Main {
         realizarQuestao4(lista5kAlea, "ReservasOrganizadas/ABB/ABB5000alea.txt", nomes);
         realizarQuestao4(lista5kOrd, "ReservasOrganizadas/ABB/ABB5000ord.txt", nomes);
         realizarQuestao4(lista5kInv, "ReservasOrganizadas/ABB/ABB5000inv.txt", nomes);
+        {/*TODO descomentar */}
+
+        //realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt", nomes);
+        //realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt", nomes);
+        //realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt", nomes);
         
-        realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt", nomes);
-        realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt", nomes);
-        realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt", nomes);
+        //realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt", nomes);
+        //realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
+        //realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
         
-        realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt", nomes);
-        realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
-        realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
+        //Questão 5
+        realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
+        realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
+        realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
+        
+        realizarQuestao4(lista5kAlea, "ReservasOrganizadas/AVL/AVL5000alea.txt", nomes);
+        realizarQuestao4(lista5kOrd, "ReservasOrganizadas/AVL/AVL5000ord.txt", nomes);
+        realizarQuestao4(lista5kInv, "ReservasOrganizadas/AVL/AVL5000inv.txt", nomes);
+        
+        //realizarQuestao4(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt", nomes);
+        //realizarQuestao4(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt", nomes);
+        //realizarQuestao4(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt", nomes);
+
+        //realizarQuestao4(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt", nomes);
+        //realizarQuestao4(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt", nomes);
+        //realizarQuestao4(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt", nomes);
+        
     }
 
-    //Metodos de sobreescrever arquivos: 
+    //Metodos de lidar com os arquivos: 
 
     // função para ler o arquivo e retornar uma lista de Reserva recebe como
     // parametro o caminho do arquivo
@@ -76,7 +95,7 @@ public class Main {
         }
         return list;
     }
-
+    // função para ler os nomes do arquivo nome.txt e criar uma arraylist com os mesmos
     public static ArrayList<String> readNames(){
         ArrayList<String> list = new ArrayList<String>();
         Path path = Paths.get("reservas/nome.txt");
@@ -93,24 +112,33 @@ public class Main {
         return list;
     }
 
-    // função para escrever, conforme padronizado no arquivo
-   public static void writeReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
-        if (reservas == null || reservas.isEmpty()) {
-            return; 
+    // função para escreve o arquivo, conforme padronizado na descrição do trabalho
+   public static void writeReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome) throws IOException {
+       
+       Path path = Paths.get(arquivoDestino);
+       ArrayList<String> lines = new ArrayList<>();
+       lines.add("\n---------------------------");
+    
+        if(reservas == null || reservas.isEmpty()){
+            if(nome != null){//caso o cliente não tenha reservas escreve no arquivo que não encontrou
+                lines.add("Nome: " + nome);
+                lines.add("Não tem reserva");
+
+                Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND); 
+            }
+
+            return;
+            
+        }else{
+            lines.add("NOME: " + reservas.get(0).getNome());
+    
+            for (Reserva r : reservas) {
+                lines.add("Reserva: " + r.getCodReserva() + " Voo: " + r.getCodVoo() + " Data: " + r.getData() + " Assento: " + r.getAssento());
+            }
+            lines.add("Total: " + reservas.size() + " reserva(s) adicionada(s)");
+    
+            Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         }
-
-        Path path = Paths.get(arquivoDestino);
-        ArrayList<String> lines = new ArrayList<>();
-
-        lines.add("\n---------------------------");
-        lines.add("NOME: " + reservas.get(0).getNome());
-        
-        for (Reserva r : reservas) {
-            lines.add("Reserva: " + r.getCodReserva() + " Voo: " + r.getCodVoo() + " Data: " + r.getData() + " Assento: " + r.getAssento());
-        }
-        lines.add("Total: " + reservas.size() + " reserva(s) adicionada(s)");
-
-        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND); 
     }
 
     //cuidado para não passar o path de um arquivo na pasta reservas
@@ -136,24 +164,30 @@ public class Main {
 
     //Questão 4
     public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        ABB arvoreAbb = montaABB(data);
+
         for(int i = 0; i < 5; i++){
-            pesquisaABB(data, caminhoDestino, nomesPesquisa);
+            principalQuestao4(caminhoDestino, nomesPesquisa, arvoreAbb);
             if(i != 4){//caso queira testar 
                 cleanFile(caminhoDestino);
             }
         }
     }
 
+    public static void principalQuestao4(String caminhoDestino, ArrayList<String> nomesPesquisa, ABB arvoreAbb){
 
-    public static void pesquisaABB(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
-        ABB arvoreAbb = montaABB(data);
-        ArrayList<ArrayList<Reserva>> clientes = pesquisaABB(nomesPesquisa, arvoreAbb);
+        for(String cliente: nomesPesquisa){
+            ArrayList<Reserva> reservasCliente = new ArrayList<>();
+            reservasCliente = arvoreAbb.pesquisarNome(cliente);//pesquisa na abb pelo nome de cada cliente
 
-        for(ArrayList<Reserva> reservasCliente: clientes){//adiciona um por um os clientes e suas reservas segundo padronizado no documento
             try{
-                writeReservasToFile(caminhoDestino, reservasCliente);
-            }catch(IOException e){//colocando para o java não reclamar
-
+                if(reservasCliente.size() > 0){
+                    writeReservasToFile(caminhoDestino, reservasCliente, null);
+                }else{
+                    writeReservasToFile(caminhoDestino, null, cliente);
+                }
+            }catch(IOException e){
+                
             }
         }
     }
@@ -169,16 +203,43 @@ public class Main {
         return arvore;
     }
 
-    public static ArrayList<ArrayList<Reserva>> pesquisaABB(ArrayList<String> clientes, ABB arv){
-        ArrayList<ArrayList<Reserva>> clientesEncontrados = new ArrayList<>();
-        for(String cliente: clientes){
-            ArrayList<Reserva> reservasCliente = new ArrayList<>();
-            reservasCliente = arv.pesquisarNome(cliente);
-            if(reservasCliente.size() > 0){
-                clientesEncontrados.add(reservasCliente);
+    //Questão 5
+
+    public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
+        AVL arvoreAVL = montaAVL(data);
+
+        for(int i = 0; i < 5; i++){
+            principalQuestao5( caminhoDestino, nomesPesquisa, arvoreAVL);
+            if(i != 4){//caso queira testar com um menor numero de repetições lembrar de mudar aqui também
+                cleanFile(caminhoDestino);
             }
         }
-        return clientesEncontrados;
     }
 
+    //metodo pricipal da questao 5
+    public static void principalQuestao5(String arquivoDestino, ArrayList<String> nomesPesquisa, AVL arvoreAVL){
+        for(String cliente: nomesPesquisa){
+            ArrayList<Reserva> reservasCliente = new ArrayList<>();
+            reservasCliente = arvoreAVL.pesquisarNome(cliente);
+            try{
+                if(reservasCliente.size() > 0){//se encontrou reservas para o cliente escreve diretamente no arquivo
+                    writeReservasToFile(arquivoDestino, reservasCliente, null);
+                }else{//caso o cliente não tenha reservas escreve no arquivo que não encontrou
+                    writeReservasToFile(arquivoDestino, null, cliente);
+                }
+            }catch(IOException e){
+
+            }
+        }
+    }
+
+    public static AVL montaAVL(ArrayList<Reserva> reservas) {
+        AVL arvore = new AVL();
+
+        for (Reserva reserva : reservas) {
+            arvore.inserir(reserva);
+        }
+        
+        return arvore;
+    }
 }

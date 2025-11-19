@@ -1,1 +1,0 @@
-Arquivo placeholder: copie os dados de `ReservasOrganizadas/ABB/ABB5000inv.txt` ou gere novos dados conforme necessário.
