@@ -10,6 +10,10 @@ public class QuickSort{
         this.lista = data;
     }
 
+    public ArrayList<Reserva> getLista() {
+        return lista;
+    }
+
     public ArrayList<Reserva> ordena(){
         ordena(0, this.lista.size() -1);
         return this.lista;
@@ -26,15 +30,15 @@ public class QuickSort{
                 i++;
             }
             while(this.lista.get(j).getCodReserva().compareTo(pivo) > 0){
-                j++;
+                j--;
             }
 
             if(i <= j){
                 Reserva temp = this.lista.get(i);
                 this.lista.set(i, this.lista.get(j));
                 this.lista.set(j, temp);
-                j++;
-                i--; 
+                i++;
+                j--; 
             }
         }while(i <= j);
         
@@ -43,7 +47,7 @@ public class QuickSort{
         }
 
         if(dir > i){
-            ordena(esq, j);
+            ordena(i, dir);
         }
     }
 }

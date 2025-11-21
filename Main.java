@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import ABB.ABB;
+import QuickSort.QuickSort;
 import ReservaType.Reserva;
 
 import java.io.BufferedReader;
@@ -30,7 +31,16 @@ public class Main {
         ArrayList<Reserva> lista50kOrd = readAllReservas("reservas/Reserva50000ord.txt");
         ArrayList<String> nomes = readNames();
 
-        //Questão 4
+        //-------------Questão 2---------------------
+        realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSort/QuickSort1000alea.txt");
+        realizarQuestao2(lista1kOrd, "ReservasOrganizadas/QuickSort/QuickSort1000ord.txt");
+        realizarQuestao2(lista1kInv, "ReservasOrganizadas/QuickSort/QuickSort1000inv.txt");
+        
+        realizarQuestao2(lista5kAlea, "ReservasOrganizadas/QuickSort/QuickSort5000alea.txt");
+        realizarQuestao2(lista5kOrd, "ReservasOrganizadas/QuickSort/QuickSort5000ord.txt");
+        realizarQuestao2(lista5kInv, "ReservasOrganizadas/QuickSort/QuickSort5000inv.txt");
+
+        //-------------Questão 4---------------------
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/ABB/ABB1000alea.txt", nomes);
         realizarQuestao4(lista1kOrd, "ReservasOrganizadas/ABB/ABB1000ord.txt", nomes);
         realizarQuestao4(lista1kInv, "ReservasOrganizadas/ABB/ABB1000inv.txt", nomes);
@@ -48,7 +58,7 @@ public class Main {
         //realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
         //realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
         
-        //Questão 5
+        //-------------Questão 5---------------------
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
         realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
         realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
@@ -164,6 +174,26 @@ public class Main {
     public static void exibirReservaAusente(String nome) {
         System.out.println("Nome: " + nome);
         System.out.println("Não tem reserva");
+    }
+
+    //-------------------Questão 2-----------------------
+    public static void realizarQuestao2(ArrayList<Reserva> data, String caminhoDestino){
+        for(int i = 0; i < 5; i++){
+            principalQuestao2(data, caminhoDestino);
+            if(i != 4){//caso queira testar 
+                cleanFile(caminhoDestino);
+            }
+        }
+    }
+
+    public static void principalQuestao2(ArrayList<Reserva> data, String caminhoDestino){
+        QuickSort sorter = new QuickSort(data);
+        sorter.ordena();
+        try{
+            writeReservasToFile(caminhoDestino, sorter.getLista(), null);
+        }catch(IOException e){
+
+        }
     }
 
     //-------------------Questão 4-----------------------

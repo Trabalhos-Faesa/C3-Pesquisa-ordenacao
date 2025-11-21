@@ -1,6 +1,6 @@
 package QuickSortInsercao;
 import QuickSort.QuickSort;
 
-public class QuickSortInsecao extends QuickSort {
+public class QuickSortInsecao {
 
 }
