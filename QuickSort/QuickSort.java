@@ -54,7 +54,7 @@ public class QuickSort{
     public int comparaElementos(Reserva pivo, Reserva elemento){
         int comparacao = elemento.getNome().compareTo(pivo.getNome());
         if(comparacao == 0){
-            comparacao = pivo.getCodReserva().compareTo(pivo.getCodReserva());
+            comparacao = elemento.getCodReserva().compareTo(pivo.getCodReserva());
         }
         return comparacao;
     }
