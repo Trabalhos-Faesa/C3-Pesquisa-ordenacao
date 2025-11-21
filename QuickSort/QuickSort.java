@@ -22,14 +22,14 @@ public class QuickSort{
     public void ordena(int esq, int dir){
 
         int i = esq, j = dir;
-        String pivo; 
-        pivo = this.lista.get((i+j)/2).getCodReserva();
+        Reserva pivo; 
+        pivo = this.lista.get((i+j)/2);
 
         do{
-            while(this.lista.get(i).getCodReserva().compareTo(pivo) < 0){
+            while(comparaElementos(pivo, this.lista.get(i)) < 0){//compara por nome se o pivo é menor ou igual ao indice atual de i (elemento), caso menor incrementa i
                 i++;
             }
-            while(this.lista.get(j).getCodReserva().compareTo(pivo) > 0){
+            while(comparaElementos(pivo, this.lista.get(j)) > 0){//incrementa J caso o elemento de indice J seja maior que o pivo
                 j--;
             }
 
@@ -49,5 +49,13 @@ public class QuickSort{
         if(dir > i){
             ordena(i, dir);
         }
+    }
+
+    public static int comparaElementos(Reserva pivo, Reserva elemento){
+        int comparacao = elemento.getNome().compareTo(pivo.getNome());
+        if(comparacao == 0){
+            comparacao = pivo.getCodReserva().compareTo(pivo.getCodReserva());
+        }
+        return comparacao;
     }
 }

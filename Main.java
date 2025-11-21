@@ -126,23 +126,18 @@ public class Main {
         return list;
     }
 
-    // função para escreve o arquivo, conforme padronizado na descrição do trabalho
-   public static void writeReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome) throws IOException {
+    // função para escreve lista de reservas o arquivo para as questões de pesquisa
+   public static void writeListReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome) throws IOException {
        
        Path path = Paths.get(arquivoDestino);
        ArrayList<String> lines = new ArrayList<>();
        lines.add("\n---------------------------");
     
-        if(reservas == null || reservas.isEmpty()){
-            if(nome != null){//caso o cliente não tenha reservas escreve no arquivo que não encontrou
+        if(reservas == null || reservas.isEmpty()){//caso o cliente não tenha reservas escreve no arquivo que não encontrou
+            if(nome != null){
                 lines.add("Nome: " + nome);
                 lines.add("Não tem reserva");
-
-                Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND); 
             }
-
-            return;
-            
         }else{
             lines.add("NOME: " + reservas.get(0).getNome());
     
@@ -150,9 +145,20 @@ public class Main {
                 lines.add("Reserva: " + r.getCodReserva() + " Voo: " + r.getCodVoo() + " Data: " + r.getData() + " Assento: " + r.getAssento());
             }
             lines.add("Total: " + reservas.size() + " reserva(s) adicionada(s)");
-    
-            Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         }
+        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
+
+    //variacao da função acima adaptada para as questoes de ordenaçao
+    public static void writeReservaToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException{
+        Path path = Paths.get(arquivoDestino);
+        ArrayList<String> lines = new ArrayList<String>(2);
+        lines.add("\n---------------------------");
+
+        for(Reserva reserva: reservas){
+            lines.add("Nome: " + reserva.getNome() + " Reserva: " + reserva.getCodReserva() + " Voo: " + reserva.getCodVoo() + " Data: " + reserva.getData() + " Assento: " + reserva.getAssento());
+        }
+        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
 
     //cuidado para não passar o path de um arquivo na pasta /reservas
@@ -190,7 +196,7 @@ public class Main {
         QuickSort sorter = new QuickSort(data);
         sorter.ordena();
         try{
-            writeReservasToFile(caminhoDestino, sorter.getLista(), null);
+            writeReservaToFile(caminhoDestino, sorter.getLista());
         }catch(IOException e){
 
         }
@@ -216,9 +222,9 @@ public class Main {
 
             try{
                 if(reservasCliente.size() > 0){
-                    writeReservasToFile(caminhoDestino, reservasCliente, null);
+                    writeListReservasToFile(caminhoDestino, reservasCliente, null);
                 }else{
-                    writeReservasToFile(caminhoDestino, null, cliente);
+                    writeListReservasToFile(caminhoDestino, null, cliente);
                 }
             }catch(IOException e){
                 
@@ -256,9 +262,9 @@ public class Main {
             reservasCliente = arvoreAVL.pesquisarNome(cliente);
             try{
                 if(reservasCliente.size() > 0){//se encontrou reservas para o cliente escreve diretamente no arquivo
-                    writeReservasToFile(arquivoDestino, reservasCliente, null);
+                    writeListReservasToFile(arquivoDestino, reservasCliente, null);
                 }else{//caso o cliente não tenha reservas escreve no arquivo que não encontrou
-                    writeReservasToFile(arquivoDestino, null, cliente);
+                    writeListReservasToFile(arquivoDestino, null, cliente);
                 }
             }catch(IOException e){
 
