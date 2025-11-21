@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import ReservaType.Reserva;
+
 public class AVL {
     private NoAVL raiz;
     private boolean balancear;

@@ -1,3 +1,5 @@
+import ReservaType.Reserva;
+
 public class NoAVL {
     private Reserva reserva;
     private NoAVL esq;

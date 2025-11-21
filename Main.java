@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+
+import ABB.ABB;
+import ReservaType.Reserva;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -63,7 +67,7 @@ public class Main {
         
     }
 
-    //Metodos de lidar com os arquivos: 
+    //-------------------------Metodos de lidar com os arquivos:---------------------------------
 
     // função para ler o arquivo e retornar uma lista de Reserva recebe como
     // parametro o caminho do arquivo
@@ -141,7 +145,7 @@ public class Main {
         }
     }
 
-    //cuidado para não passar o path de um arquivo na pasta reservas
+    //cuidado para não passar o path de um arquivo na pasta /reservas
     public static void cleanFile(String arquivoDestino){
         Path path = Paths.get(arquivoDestino);
         try{
@@ -162,7 +166,7 @@ public class Main {
         System.out.println("Não tem reserva");
     }
 
-    //Questão 4
+    //-------------------Questão 4-----------------------
     public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
         ABB arvoreAbb = montaABB(data);
 
@@ -203,8 +207,7 @@ public class Main {
         return arvore;
     }
 
-    //Questão 5
-
+    //----------------------Questão 5-----------------------------
     public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa){
         AVL arvoreAVL = montaAVL(data);
 
