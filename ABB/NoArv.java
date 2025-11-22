@@ -1,3 +1,7 @@
+package ABB;
+
+import ReservaType.Reserva;
+
 public class NoArv {
     private Reserva reserva;
     private NoArv esq;

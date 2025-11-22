@@ -1,3 +1,4 @@
+package ReservaType;
 public class Reserva {
     private String nome;
     private String codReserva;
