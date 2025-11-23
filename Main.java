@@ -225,8 +225,8 @@ public class Main {
         }
         Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     }
-
-    // cuidado para não passar o path de um arquivo na pasta /reservas
+    
+    //limpa o arquivo antes de cada nova escrita
     public static void cleanFile(String arquivoDestino) {
         Path path = Paths.get(arquivoDestino);
         try {
@@ -236,78 +236,108 @@ public class Main {
         }
     }
 
-    // -------------------Questão 1-----------------------
-    public static void realizarQuestao1(ArrayList<Reserva> data, String caminhoDestino) {
-        Heap sorter = new Heap(data);
+    public static void writeOperationTimer(long tempoExecucao, String arquivoDestino) {
+        Path path = Paths.get(arquivoDestino);
+        ArrayList<String> lines = new ArrayList<String>();
+        lines.add("\n");
+        lines.add("\n-------------------Tempo Execução------------------");
+        lines.add("Tempo total de execução (ms): " + tempoExecucao/5);
+        try {
+            Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {// colocando para o java não reclamar
 
-        for (int i = 0; i < 5; i++) {
-            principalQuestao1(sorter, caminhoDestino);
-            if (i != 4) {
-                cleanFile(caminhoDestino);
-            }
         }
     }
 
-    public static void principalQuestao1(Heap sorter, String caminhoDestino) {
+    // -------------------Questão 1-----------------------
+    public static void realizarQuestao1(ArrayList<Reserva> data, String arquivoDestino) {
+        Heap sorter = new Heap(data);
+        long initialTime = System.currentTimeMillis(), finalTime;
+
+        for (int i = 0; i < 5; i++) {
+            principalQuestao1(sorter, arquivoDestino);
+            if (i != 4) {
+                cleanFile(arquivoDestino);
+            }
+        }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
+    }
+
+    public static void principalQuestao1(Heap sorter, String arquivoDestino) {
         try {
-            writeSortResultToFile(caminhoDestino, sorter.ordenar());
+            writeSortResultToFile(arquivoDestino, sorter.ordenar());
         } catch (IOException e) {
 
         }
     }
 
     // -------------------Questão 2-----------------------
-    public static void realizarQuestao2(ArrayList<Reserva> data, String caminhoDestino) {
+    public static void realizarQuestao2(ArrayList<Reserva> data, String arquivoDestino) {
         QuickSort sorter = new QuickSort(data);
+        long initialTime = System.currentTimeMillis(), finalTime;
+
         for (int i = 0; i < 5; i++) {
-            principalQuestao2(sorter, caminhoDestino);
+            principalQuestao2(sorter, arquivoDestino);
             if (i != 4) {
-                cleanFile(caminhoDestino);
+                cleanFile(arquivoDestino);
             }
         }
+
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
 
-    public static void principalQuestao2(QuickSort sorter, String caminhoDestino) {
+    public static void principalQuestao2(QuickSort sorter, String arquivoDestino) {
         try {
-            writeSortResultToFile(caminhoDestino, sorter.ordena());
+            writeSortResultToFile(arquivoDestino, sorter.ordena());
         } catch (IOException e) {
 
         }
     }
 
     // -------------------Questão 3-----------------------
-    public static void realizarQuestao3(ArrayList<Reserva> data, String caminhoDestino) {
+    public static void realizarQuestao3(ArrayList<Reserva> data, String arquivoDestino) {
+        long initialTime = System.currentTimeMillis(), finalTime;
         for (int i = 0; i < 5; i++) {
-            principalQuestao3(data, caminhoDestino);
+            principalQuestao3(data, arquivoDestino);
             if (i != 4) {
-                cleanFile(caminhoDestino);
+                cleanFile(arquivoDestino);
             }
         }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
 
-    public static void principalQuestao3(ArrayList<Reserva> data, String caminhoDestino) {
+    public static void principalQuestao3(ArrayList<Reserva> data, String arquivoDestino) {
         QuickSortInsercao sorter = new QuickSortInsercao(data);
         sorter.ordena();
         try {
-            writeSortResultToFile(caminhoDestino, sorter.getLista());
+            writeSortResultToFile(arquivoDestino, sorter.getLista());
         } catch (IOException e) {
 
         }
     }
 
     // -------------------Questão 4-----------------------
-    public static void realizarQuestao4(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
+    public static void realizarQuestao4(ArrayList<Reserva> data, String arquivoDestino, ArrayList<String> nomesPesquisa) {
         ABB arvoreAbb = montaABB(data);
-
+        long initialTime = System.currentTimeMillis(), finalTime;
         for (int i = 0; i < 5; i++) {
-            principalQuestao4(caminhoDestino, nomesPesquisa, arvoreAbb);
+            principalQuestao4(arquivoDestino, nomesPesquisa, arvoreAbb);
             if (i != 4) {// caso queira testar
-                cleanFile(caminhoDestino);
+                cleanFile(arquivoDestino);
             }
         }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
 
-    public static void principalQuestao4(String caminhoDestino, ArrayList<String> nomesPesquisa, ABB arvoreAbb) {
+    public static void principalQuestao4(String arquivoDestino, ArrayList<String> nomesPesquisa, ABB arvoreAbb) {
 
         for (String cliente : nomesPesquisa) {
             ArrayList<Reserva> reservasCliente = new ArrayList<>();
@@ -315,9 +345,9 @@ public class Main {
 
             try {
                 if (reservasCliente.size() > 0) {
-                    writeSearchResultToFile(caminhoDestino, reservasCliente, null);
+                    writeSearchResultToFile(arquivoDestino, reservasCliente, null);
                 } else {
-                    writeSearchResultToFile(caminhoDestino, null, cliente);
+                    writeSearchResultToFile(arquivoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
@@ -337,15 +367,18 @@ public class Main {
     }
 
     // ----------------------Questão 5-----------------------------
-    public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
+    public static void realizarQuestao5(ArrayList<Reserva> data, String arquivoDestino, ArrayList<String> nomesPesquisa) {
         AVL arvoreAVL = montaAVL(data);
-
+        long initialTime = System.currentTimeMillis(), finalTime;
         for (int i = 0; i < 5; i++) {
-            principalQuestao5(caminhoDestino, nomesPesquisa, arvoreAVL);
+            principalQuestao5(arquivoDestino, nomesPesquisa, arvoreAVL);
             if (i != 4) {
-                cleanFile(caminhoDestino);
+                cleanFile(arquivoDestino);
             }
         }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
 
     // metodo pricipal da questao 5
@@ -378,21 +411,24 @@ public class Main {
     }
 
     // ----------------------Questão 6-----------------------------
-    public static void realizarQuestao6(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
+    public static void realizarQuestao6(ArrayList<Reserva> data, String arquivoDestino, ArrayList<String> nomesPesquisa) {
         Hashing hash = montaHashing(data);
+        long initialTime = System.currentTimeMillis(), finalTime;
 
         for (int i = 0; i < 5; i++) {
-            principalQuestao6(caminhoDestino, nomesPesquisa, hash);
+            principalQuestao6(arquivoDestino, nomesPesquisa, hash);
             if (i != 4) {
-                cleanFile(caminhoDestino);
+                cleanFile(arquivoDestino);
             }
         }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
 
     // metodo pricipal da questao 6
     public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, Hashing hash) {
         ArrayList<Reserva> reservasCliente;
-
         for (String cliente : nomesPesquisa) {
             reservasCliente = parseToArrayList(hash.searchByName(cliente));
             
