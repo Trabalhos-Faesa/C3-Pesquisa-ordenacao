@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 import ABB.ABB;
+import Heap.Heap;
 import QuickSort.QuickSort;
 import QuickSortInsercao.QuickSortInsercao;
 import ReservaType.Reserva;
@@ -31,6 +32,23 @@ public class Main {
         ArrayList<Reserva> lista50kAlea = readAllReservas("reservas/Reserva50000alea.txt");
         ArrayList<Reserva> lista50kOrd = readAllReservas("reservas/Reserva50000ord.txt");
         ArrayList<String> nomes = readNames();
+
+        // -------------Questão 1---------------------
+        realizarQuestao1(lista1kAlea, "ReservasOrganizadas/HEAP/HEAP1000alea.txt");
+        realizarQuestao1(lista1kOrd, "ReservasOrganizadas/HEAP/HEAP1000ord.txt");
+        realizarQuestao1(lista1kInv, "ReservasOrganizadas/HEAP/HEAP1000inv.txt");
+
+        realizarQuestao1(lista5kAlea, "ReservasOrganizadas/HEAP/HEAP5000alea.txt");
+        realizarQuestao1(lista5kOrd, "ReservasOrganizadas/HEAP/HEAP5000ord.txt");
+        realizarQuestao1(lista5kInv, "ReservasOrganizadas/HEAP/HEAP5000inv.txt");
+
+        // realizarQuestao1(lista10kAlea, "ReservasOrganizadas/HEAP/HEAP10000alea.txt", nomes);
+        // realizarQuestao1(lista10kOrd, "ReservasOrganizadas/HEAP/HEAP10000ord.txt", nomes);
+        // realizarQuestao1(lista10kInv, "ReservasOrganizadas/HEAP/HEAP10000inv.txt", nomes);
+
+        // realizarQuestao1(lista50kAlea, "ReservasOrganizadas/HEAP/HEAP50000alea.txt", nomes);
+        // realizarQuestao1(lista50kOrd, "ReservasOrganizadas/HEAP/HEAP50000ord.txt", nomes);
+        // realizarQuestao1(lista50kInv, "ReservasOrganizadas/HEAP/HEAP50000inv.txt", nomes);
 
         // -------------Questão 2---------------------
         realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSort/QuickSort1000alea.txt");
@@ -201,22 +219,40 @@ public class Main {
         }
     }
 
+    // -------------------Questão 1-----------------------
+    public static void realizarQuestao1(ArrayList<Reserva> data, String caminhoDestino) {
+        Heap sorter = new Heap(data);
 
-    // -------------------Questão 2-----------------------
-    public static void realizarQuestao2(ArrayList<Reserva> data, String caminhoDestino) {
         for (int i = 0; i < 5; i++) {
-            principalQuestao2(data, caminhoDestino);
+            principalQuestao1(sorter, caminhoDestino);
             if (i != 4) {// caso queira testar
                 cleanFile(caminhoDestino);
             }
         }
     }
 
-    public static void principalQuestao2(ArrayList<Reserva> data, String caminhoDestino) {
-        QuickSort sorter = new QuickSort(data);
-        sorter.ordena();
+    public static void principalQuestao1(Heap sorter, String caminhoDestino) {
         try {
-            writeSortToFile(caminhoDestino, sorter.getLista());
+            writeSortToFile(caminhoDestino, sorter.ordenar());
+        } catch (IOException e) {
+
+        }
+    }
+
+    // -------------------Questão 2-----------------------
+    public static void realizarQuestao2(ArrayList<Reserva> data, String caminhoDestino) {
+        QuickSort sorter = new QuickSort(data);
+        for (int i = 0; i < 5; i++) {
+            principalQuestao2(sorter, caminhoDestino);
+            if (i != 4) {// caso queira testar
+                cleanFile(caminhoDestino);
+            }
+        }
+    }
+
+    public static void principalQuestao2(QuickSort sorter, String caminhoDestino) {
+        try {
+            writeSortToFile(caminhoDestino, sorter.ordena());
         } catch (IOException e) {
 
         }
@@ -225,7 +261,7 @@ public class Main {
     // -------------------Questão 3-----------------------
     public static void realizarQuestao3(ArrayList<Reserva> data, String caminhoDestino) {
         for (int i = 0; i < 5; i++) {
-            principalQuestao2(data, caminhoDestino);
+            principalQuestao3(data, caminhoDestino);
             if (i != 4) {// caso queira testar
                 cleanFile(caminhoDestino);
             }
