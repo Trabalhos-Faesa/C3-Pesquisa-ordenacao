@@ -44,13 +44,13 @@ public class Main {
         realizarQuestao1(lista5kOrd, "ReservasOrganizadas/HEAP/HEAP5000ord.txt");
         realizarQuestao1(lista5kInv, "ReservasOrganizadas/HEAP/HEAP5000inv.txt");
 
-        // realizarQuestao1(lista10kAlea, "ReservasOrganizadas/HEAP/HEAP10000alea.txt",nomes);
-        // realizarQuestao1(lista10kOrd, "ReservasOrganizadas/HEAP/HEAP10000ord.txt",nomes);
-        // realizarQuestao1(lista10kInv, "ReservasOrganizadas/HEAP/HEAP10000inv.txt",nomes);
+        realizarQuestao1(lista10kAlea, "ReservasOrganizadas/HEAP/HEAP10000alea.txt");
+        realizarQuestao1(lista10kOrd, "ReservasOrganizadas/HEAP/HEAP10000ord.txt");
+        realizarQuestao1(lista10kInv, "ReservasOrganizadas/HEAP/HEAP10000inv.txt");
 
-        // realizarQuestao1(lista50kAlea, "ReservasOrganizadas/HEAP/HEAP50000alea.txt",nomes);
-        // realizarQuestao1(lista50kOrd, "ReservasOrganizadas/HEAP/HEAP50000ord.txt",nomes);
-        // realizarQuestao1(lista50kInv, "ReservasOrganizadas/HEAP/HEAP50000inv.txt",nomes);
+        realizarQuestao1(lista50kAlea, "ReservasOrganizadas/HEAP/HEAP50000alea.txt");
+        realizarQuestao1(lista50kOrd, "ReservasOrganizadas/HEAP/HEAP50000ord.txt");
+        realizarQuestao1(lista50kInv, "ReservasOrganizadas/HEAP/HEAP50000inv.txt");
 
         // -------------Questão 2---------------------
         realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSort/QuickSort1000alea.txt");
@@ -61,13 +61,13 @@ public class Main {
         realizarQuestao2(lista5kOrd, "ReservasOrganizadas/QuickSort/QuickSort5000ord.txt");
         realizarQuestao2(lista5kInv, "ReservasOrganizadas/QuickSort/QuickSort5000inv.txt");
 
-        // realizarQuestao2(lista10kAlea,"ReservasOrganizadas/QuickSort/QuickSort10000alea.txt", nomes);
-        // realizarQuestao2(lista10kOrd,"ReservasOrganizadas/QuickSort/QuickSort10000ord.txt", nomes);
-        // realizarQuestao2(lista10kInv,"ReservasOrganizadas/QuickSort/QuickSort10000inv.txt", nomes);
+        realizarQuestao2(lista10kAlea,"ReservasOrganizadas/QuickSort/QuickSort10000alea.txt");
+        realizarQuestao2(lista10kOrd,"ReservasOrganizadas/QuickSort/QuickSort10000ord.txt");
+        realizarQuestao2(lista10kInv,"ReservasOrganizadas/QuickSort/QuickSort10000inv.txt");
 
-        // realizarQuestao2(lista50kAlea,"ReservasOrganizadas/QuickSort/QuickSort50000alea.txt", nomes);
-        // realizarQuestao2(lista50kOrd,"ReservasOrganizadas/QuickSort/QuickSort50000ord.txt", nomes);
-        // realizarQuestao2(lista50kInv,"ReservasOrganizadas/QuickSort/QuickSort50000inv.txt", nomes);
+        realizarQuestao2(lista50kAlea,"ReservasOrganizadas/QuickSort/QuickSort50000alea.txt");
+        realizarQuestao2(lista50kOrd,"ReservasOrganizadas/QuickSort/QuickSort50000ord.txt");
+        realizarQuestao2(lista50kInv,"ReservasOrganizadas/QuickSort/QuickSort50000inv.txt");
 
         // -------------Questão 3---------------------
         realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSortInsercao/QuickSort1000alea.txt");
@@ -78,13 +78,13 @@ public class Main {
         realizarQuestao2(lista5kOrd, "ReservasOrganizadas/QuickSortInsercao/QuickSort5000ord.txt");
         realizarQuestao2(lista5kInv, "ReservasOrganizadas/QuickSortInsercao/QuickSort5000inv.txt");
 
-        // realizarQuestao3(lista10kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000alea.txt", nomes);
-        // realizarQuestao3(lista10kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000ord.txt", nomes);
-        // realizarQuestao3(lista10kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000inv.txt", nomes);
+        realizarQuestao3(lista10kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000alea.txt");
+        realizarQuestao3(lista10kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000ord.txt");
+        realizarQuestao3(lista10kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000inv.txt");
 
-        // realizarQuestao3(lista50kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000alea.txt", nomes);
-        // realizarQuestao3(lista50kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000ord.txt", nomes);
-        // realizarQuestao3(lista50kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000inv.txt", nomes);
+        realizarQuestao3(lista50kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000alea.txt");
+        realizarQuestao3(lista50kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000ord.txt");
+        realizarQuestao3(lista50kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000inv.txt");
 
         // -------------Questão 4---------------------
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/ABB/ABB1000alea.txt", nomes);
@@ -94,16 +94,14 @@ public class Main {
         realizarQuestao4(lista5kAlea, "ReservasOrganizadas/ABB/ABB5000alea.txt", nomes);
         realizarQuestao4(lista5kOrd, "ReservasOrganizadas/ABB/ABB5000ord.txt", nomes);
         realizarQuestao4(lista5kInv, "ReservasOrganizadas/ABB/ABB5000inv.txt", nomes);
-        {
-            /* TODO descomentar */}
 
-        // realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt",nomes);
-        // realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt",nomes);
-        // realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt",nomes);
+        realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt",nomes);
+        realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt",nomes);
+        realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt",nomes);
 
-        // realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt",nomes);
-        // realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt",nomes);
-        // realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt",nomes);
+        realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt",nomes);
+        realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt",nomes);
+        realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt",nomes);
 
         // -------------Questão 5---------------------
         realizarQuestao5(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
@@ -114,13 +112,13 @@ public class Main {
         realizarQuestao5(lista5kOrd, "ReservasOrganizadas/AVL/AVL5000ord.txt", nomes);
         realizarQuestao5(lista5kInv, "ReservasOrganizadas/AVL/AVL5000inv.txt", nomes);
 
-        // realizarQuestao5(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt",nomes);
-        // realizarQuestao5(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt",nomes);
-        // realizarQuestao5(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt",nomes);
+        realizarQuestao5(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt",nomes);
+        realizarQuestao5(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt",nomes);
+        realizarQuestao5(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt",nomes);
 
-        // realizarQuestao5(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt",nomes);
-        // realizarQuestao5(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt",nomes);
-        // realizarQuestao5(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt",nomes);
+        realizarQuestao5(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt",nomes);
+        realizarQuestao5(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt",nomes);
+        realizarQuestao5(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt",nomes);
 
         // -------------Questão 6---------------------
         realizarQuestao6(lista1kAlea, "ReservasOrganizadas/Hashing/Hashing1000alea.txt", nomes);
@@ -131,13 +129,13 @@ public class Main {
         realizarQuestao6(lista5kOrd, "ReservasOrganizadas/Hashing/Hashing5000ord.txt", nomes);
         realizarQuestao6(lista5kInv, "ReservasOrganizadas/Hashing/Hashing5000inv.txt", nomes);
 
-        // realizarQuestao6(lista10kAlea, "ReservasOrganizadas/Hashing/Hashing10000alea.txt", nomes);
-        // realizarQuestao6(lista10kOrd, "ReservasOrganizadas/Hashing/Hashing10000ord.txt", nomes);
-        // realizarQuestao6(lista10kInv, "ReservasOrganizadas/Hashing/Hashing10000inv.txt", nomes);
+        realizarQuestao6(lista10kAlea, "ReservasOrganizadas/Hashing/Hashing10000alea.txt", nomes);
+        realizarQuestao6(lista10kOrd, "ReservasOrganizadas/Hashing/Hashing10000ord.txt", nomes);
+        realizarQuestao6(lista10kInv, "ReservasOrganizadas/Hashing/Hashing10000inv.txt", nomes);
 
-        // realizarQuestao6(lista50kAlea, "ReservasOrganizadas/Hashing/Hashing50000alea.txt", nomes);
-        // realizarQuestao6(lista50kOrd, "ReservasOrganizadas/Hashing/Hashing50000ord.txt", nomes);
-        // realizarQuestao6(lista50kInv, "ReservasOrganizadas/Hashing/Hashing50000inv.txt", nomes);
+        realizarQuestao6(lista50kAlea, "ReservasOrganizadas/Hashing/Hashing50000alea.txt", nomes);
+        realizarQuestao6(lista50kOrd, "ReservasOrganizadas/Hashing/Hashing50000ord.txt", nomes);
+        realizarQuestao6(lista50kInv, "ReservasOrganizadas/Hashing/Hashing50000inv.txt", nomes);
     }
 
     // -------------------------Metodos de lidar com os arquivos:---------------------------------
