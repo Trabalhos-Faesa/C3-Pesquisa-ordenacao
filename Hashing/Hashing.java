@@ -20,16 +20,18 @@ public class Hashing {
     }
     
     private int calculaValorHash(String nome) {
-        int i, soma = 0;
-        char c;
-        
-        for (i = 0; i < nome.length(); i++) {//transforma o nome em um valor numerico
-            c = nome.charAt(i);
-            soma += Character.getNumericValue(c);
+        int hash = 0;
+        int primo = 31; // Fator multiplicador
+        for (int i = 0; i < nome.length(); i++) {
+            hash = (primo * hash + nome.charAt(i)) % capacidade;// calcula o hash usando o fator da multiplicação
         }
-
-        return soma%capacidade;
-    }
+        // Garante que o resultado é positivo
+        if (hash < 0) {
+            hash += capacidade;
+        }
+    
+    return hash;
+}
 
     public void inserir(Reserva data) {
         int index = calculaValorHash(data.getNome());
