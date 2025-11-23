@@ -42,13 +42,13 @@ public class Main {
         realizarQuestao1(lista5kOrd, "ReservasOrganizadas/HEAP/HEAP5000ord.txt");
         realizarQuestao1(lista5kInv, "ReservasOrganizadas/HEAP/HEAP5000inv.txt");
 
-        // realizarQuestao1(lista10kAlea, "ReservasOrganizadas/HEAP/HEAP10000alea.txt", nomes);
-        // realizarQuestao1(lista10kOrd, "ReservasOrganizadas/HEAP/HEAP10000ord.txt", nomes);
-        // realizarQuestao1(lista10kInv, "ReservasOrganizadas/HEAP/HEAP10000inv.txt", nomes);
+        // realizarQuestao1(lista10kAlea, "ReservasOrganizadas/HEAP/HEAP10000alea.txt",nomes);
+        // realizarQuestao1(lista10kOrd, "ReservasOrganizadas/HEAP/HEAP10000ord.txt",nomes);
+        // realizarQuestao1(lista10kInv, "ReservasOrganizadas/HEAP/HEAP10000inv.txt",nomes);
 
-        // realizarQuestao1(lista50kAlea, "ReservasOrganizadas/HEAP/HEAP50000alea.txt", nomes);
-        // realizarQuestao1(lista50kOrd, "ReservasOrganizadas/HEAP/HEAP50000ord.txt", nomes);
-        // realizarQuestao1(lista50kInv, "ReservasOrganizadas/HEAP/HEAP50000inv.txt", nomes);
+        // realizarQuestao1(lista50kAlea, "ReservasOrganizadas/HEAP/HEAP50000alea.txt",nomes);
+        // realizarQuestao1(lista50kOrd, "ReservasOrganizadas/HEAP/HEAP50000ord.txt",nomes);
+        // realizarQuestao1(lista50kInv, "ReservasOrganizadas/HEAP/HEAP50000inv.txt",nomes);
 
         // -------------Questão 2---------------------
         realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSort/QuickSort1000alea.txt");
@@ -59,13 +59,13 @@ public class Main {
         realizarQuestao2(lista5kOrd, "ReservasOrganizadas/QuickSort/QuickSort5000ord.txt");
         realizarQuestao2(lista5kInv, "ReservasOrganizadas/QuickSort/QuickSort5000inv.txt");
 
-        // realizarQuestao2(lista10kAlea, "ReservasOrganizadas/QuickSort/QuickSort10000alea.txt", nomes);
-        // realizarQuestao2(lista10kOrd, "ReservasOrganizadas/QuickSort/QuickSort10000ord.txt", nomes);
-        // realizarQuestao2(lista10kInv, "ReservasOrganizadas/QuickSort/QuickSort10000inv.txt", nomes);
+        // realizarQuestao2(lista10kAlea,"ReservasOrganizadas/QuickSort/QuickSort10000alea.txt", nomes);
+        // realizarQuestao2(lista10kOrd,"ReservasOrganizadas/QuickSort/QuickSort10000ord.txt", nomes);
+        // realizarQuestao2(lista10kInv,"ReservasOrganizadas/QuickSort/QuickSort10000inv.txt", nomes);
 
-        // realizarQuestao2(lista50kAlea, "ReservasOrganizadas/QuickSort/QuickSort50000alea.txt", nomes);
-        // realizarQuestao2(lista50kOrd, "ReservasOrganizadas/QuickSort/QuickSort50000ord.txt", nomes);
-        // realizarQuestao2(lista50kInv, "ReservasOrganizadas/QuickSort/QuickSort50000inv.txt", nomes);
+        // realizarQuestao2(lista50kAlea,"ReservasOrganizadas/QuickSort/QuickSort50000alea.txt", nomes);
+        // realizarQuestao2(lista50kOrd,"ReservasOrganizadas/QuickSort/QuickSort50000ord.txt", nomes);
+        // realizarQuestao2(lista50kInv,"ReservasOrganizadas/QuickSort/QuickSort50000inv.txt", nomes);
 
         // -------------Questão 3---------------------
         realizarQuestao2(lista1kAlea, "ReservasOrganizadas/QuickSortInsercao/QuickSort1000alea.txt");
@@ -76,13 +76,13 @@ public class Main {
         realizarQuestao2(lista5kOrd, "ReservasOrganizadas/QuickSortInsercao/QuickSort5000ord.txt");
         realizarQuestao2(lista5kInv, "ReservasOrganizadas/QuickSortInsercao/QuickSort5000inv.txt");
 
-         // realizarQuestao3(lista10kAlea, "ReservasOrganizadas/QuickSortInsercao/QuickSort10000alea.txt", nomes);
-        // realizarQuestao3(lista10kOrd, "ReservasOrganizadas/QuickSortInsercao/QuickSort10000ord.txt", nomes);
-        // realizarQuestao3(lista10kInv, "ReservasOrganizadas/QuickSortInsercao/QuickSort10000inv.txt", nomes);
+        // realizarQuestao3(lista10kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000alea.txt", nomes);
+        // realizarQuestao3(lista10kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000ord.txt", nomes);
+        // realizarQuestao3(lista10kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort10000inv.txt", nomes);
 
-        // realizarQuestao3(lista50kAlea, "ReservasOrganizadas/QuickSortInsercao/QuickSort50000alea.txt", nomes);
-        // realizarQuestao3(lista50kOrd, "ReservasOrganizadas/QuickSortInsercao/QuickSort50000ord.txt", nomes);
-        // realizarQuestao3(lista50kInv, "ReservasOrganizadas/QuickSortInsercao/QuickSort50000inv.txt", nomes);
+        // realizarQuestao3(lista50kAlea,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000alea.txt", nomes);
+        // realizarQuestao3(lista50kOrd,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000ord.txt", nomes);
+        // realizarQuestao3(lista50kInv,"ReservasOrganizadas/QuickSortInsercao/QuickSort50000inv.txt", nomes);
 
         // -------------Questão 4---------------------
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/ABB/ABB1000alea.txt", nomes);
@@ -92,17 +92,39 @@ public class Main {
         realizarQuestao4(lista5kAlea, "ReservasOrganizadas/ABB/ABB5000alea.txt", nomes);
         realizarQuestao4(lista5kOrd, "ReservasOrganizadas/ABB/ABB5000ord.txt", nomes);
         realizarQuestao4(lista5kInv, "ReservasOrganizadas/ABB/ABB5000inv.txt", nomes);
-        {/* TODO descomentar */}
+        {
+            /* TODO descomentar */}
 
-        // realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt", nomes);
-        // realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt", nomes);
-        // realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt", nomes);
+        // realizarQuestao4(lista10kAlea, "ReservasOrganizadas/ABB/ABB10000alea.txt",nomes);
+        // realizarQuestao4(lista10kOrd, "ReservasOrganizadas/ABB/ABB10000ord.txt",nomes);
+        // realizarQuestao4(lista10kInv, "ReservasOrganizadas/ABB/ABB10000inv.txt",nomes);
 
-        // realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt", nomes);
-        // realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt", nomes);
-        // realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt", nomes);
+        // realizarQuestao4(lista50kAlea, "ReservasOrganizadas/ABB/ABB50000alea.txt",nomes);
+        // realizarQuestao4(lista50kOrd, "ReservasOrganizadas/ABB/ABB50000ord.txt",nomes);
+        // realizarQuestao4(lista50kInv, "ReservasOrganizadas/ABB/ABB50000inv.txt",nomes);
 
         // -------------Questão 5---------------------
+        {
+            /* TODO implementar questao 5 */}
+        realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
+        realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
+        realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
+
+        realizarQuestao4(lista5kAlea, "ReservasOrganizadas/AVL/AVL5000alea.txt", nomes);
+        realizarQuestao4(lista5kOrd, "ReservasOrganizadas/AVL/AVL5000ord.txt", nomes);
+        realizarQuestao4(lista5kInv, "ReservasOrganizadas/AVL/AVL5000inv.txt", nomes);
+
+        // realizarQuestao4(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt",nomes);
+        // realizarQuestao4(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt",nomes);
+        // realizarQuestao4(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt",nomes);
+
+        // realizarQuestao4(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt",nomes);
+        // realizarQuestao4(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt",nomes);
+        // realizarQuestao4(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt",nomes);
+
+        // -------------Questão 6---------------------
+        {
+            /* TODO implementar questao 5 */}
         realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
         realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
         realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
@@ -225,7 +247,7 @@ public class Main {
 
         for (int i = 0; i < 5; i++) {
             principalQuestao1(sorter, caminhoDestino);
-            if (i != 4) {// caso queira testar
+            if (i != 4) {
                 cleanFile(caminhoDestino);
             }
         }
@@ -244,7 +266,7 @@ public class Main {
         QuickSort sorter = new QuickSort(data);
         for (int i = 0; i < 5; i++) {
             principalQuestao2(sorter, caminhoDestino);
-            if (i != 4) {// caso queira testar
+            if (i != 4) {
                 cleanFile(caminhoDestino);
             }
         }
@@ -262,7 +284,7 @@ public class Main {
     public static void realizarQuestao3(ArrayList<Reserva> data, String caminhoDestino) {
         for (int i = 0; i < 5; i++) {
             principalQuestao3(data, caminhoDestino);
-            if (i != 4) {// caso queira testar
+            if (i != 4) {
                 cleanFile(caminhoDestino);
             }
         }
@@ -320,14 +342,12 @@ public class Main {
     }
 
     // ----------------------Questão 5-----------------------------
-    public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino,
-            ArrayList<String> nomesPesquisa) {
+    public static void realizarQuestao5(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
         AVL arvoreAVL = montaAVL(data);
 
         for (int i = 0; i < 5; i++) {
             principalQuestao5(caminhoDestino, nomesPesquisa, arvoreAVL);
-            if (i != 4) {// caso queira testar com um menor numero de repetições lembrar de mudar aqui
-                         // também
+            if (i != 4) {
                 cleanFile(caminhoDestino);
             }
         }
@@ -335,8 +355,10 @@ public class Main {
 
     // metodo pricipal da questao 5
     public static void principalQuestao5(String arquivoDestino, ArrayList<String> nomesPesquisa, AVL arvoreAVL) {
+        ArrayList<Reserva> reservasCliente;
+
         for (String cliente : nomesPesquisa) {
-            ArrayList<Reserva> reservasCliente = new ArrayList<>();
+            reservasCliente = new ArrayList<>();
             reservasCliente = arvoreAVL.pesquisarNome(cliente);
             try {
                 if (reservasCliente.size() > 0) {// se encontrou reservas para o cliente escreve diretamente no arquivo
@@ -359,4 +381,36 @@ public class Main {
 
         return arvore;
     }
+
+    // ----------------------Questão 6-----------------------------
+    public static void realizarQuestao6(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
+        AVL arvoreAVL = montaAVL(data);
+
+        for (int i = 0; i < 5; i++) {
+            principalQuestao6(caminhoDestino, nomesPesquisa, arvoreAVL);
+            if (i != 4) {
+                cleanFile(caminhoDestino);
+            }
+        }
+    }
+
+    // metodo pricipal da questao 6
+    public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, AVL arvoreAVL) {
+        ArrayList<Reserva> reservasCliente;
+
+        for (String cliente : nomesPesquisa) {
+            reservasCliente = new ArrayList<>();
+            reservasCliente = arvoreAVL.pesquisarNome(cliente);
+            try {
+                if (reservasCliente.size() > 0) {// se encontrou reservas para o cliente escreve diretamente no arquivo
+                    writeSearcToFile(arquivoDestino, reservasCliente, null);
+                } else {// caso o cliente não tenha reservas escreve no arquivo que não encontrou
+                    writeSearcToFile(arquivoDestino, null, cliente);
+                }
+            } catch (IOException e) {
+
+            }
+        }
+    }
+
 }
