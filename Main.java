@@ -153,7 +153,7 @@ public class Main {
     }
 
     // função para escreve lista de reservas o arquivo para as questões de pesquisa
-    public static void writeListReservasToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome)
+    public static void writeSearcToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome)
             throws IOException {
 
         Path path = Paths.get(arquivoDestino);
@@ -179,9 +179,9 @@ public class Main {
     }
 
     // variacao da função acima adaptada para as questoes de ordenaçao
-    public static void writeReservaToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
+    public static void writeSortToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
         Path path = Paths.get(arquivoDestino);
-        ArrayList<String> lines = new ArrayList<String>(2);
+        ArrayList<String> lines = new ArrayList<String>();
         lines.add("\n---------------------------");
 
         for (Reserva reserva : reservas) {
@@ -201,16 +201,6 @@ public class Main {
         }
     }
 
-    public static void exibirReserva(Reserva reserva) {
-        System.out.println("Nome: " + reserva.getNome());
-        System.out.println("Reserva: " + reserva.getCodReserva() + " Voo: " + reserva.getCodVoo() + " Data: "
-                + reserva.getData() + " Assento: " + reserva.getAssento());
-    }
-
-    public static void exibirReservaAusente(String nome) {
-        System.out.println("Nome: " + nome);
-        System.out.println("Não tem reserva");
-    }
 
     // -------------------Questão 2-----------------------
     public static void realizarQuestao2(ArrayList<Reserva> data, String caminhoDestino) {
@@ -226,7 +216,7 @@ public class Main {
         QuickSort sorter = new QuickSort(data);
         sorter.ordena();
         try {
-            writeReservaToFile(caminhoDestino, sorter.getLista());
+            writeSortToFile(caminhoDestino, sorter.getLista());
         } catch (IOException e) {
 
         }
@@ -246,7 +236,7 @@ public class Main {
         QuickSortInsercao sorter = new QuickSortInsercao(data);
         sorter.ordena();
         try {
-            writeReservaToFile(caminhoDestino, sorter.getLista());
+            writeSortToFile(caminhoDestino, sorter.getLista());
         } catch (IOException e) {
 
         }
@@ -272,9 +262,9 @@ public class Main {
 
             try {
                 if (reservasCliente.size() > 0) {
-                    writeListReservasToFile(caminhoDestino, reservasCliente, null);
+                    writeSearcToFile(caminhoDestino, reservasCliente, null);
                 } else {
-                    writeListReservasToFile(caminhoDestino, null, cliente);
+                    writeSearcToFile(caminhoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
@@ -314,9 +304,9 @@ public class Main {
             reservasCliente = arvoreAVL.pesquisarNome(cliente);
             try {
                 if (reservasCliente.size() > 0) {// se encontrou reservas para o cliente escreve diretamente no arquivo
-                    writeListReservasToFile(arquivoDestino, reservasCliente, null);
+                    writeSearcToFile(arquivoDestino, reservasCliente, null);
                 } else {// caso o cliente não tenha reservas escreve no arquivo que não encontrou
-                    writeListReservasToFile(arquivoDestino, null, cliente);
+                    writeSearcToFile(arquivoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
