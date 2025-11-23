@@ -74,30 +74,31 @@ public class AVL {
         NoAVL temp1, temp2;
         temp1 = no.getDir();
 
-        if(temp1.getFatorBalanceamento() == - 1){
+        if(temp1.getFatorBalanceamento() == -1){
             no.setDir(temp1.getEsq());
             temp1.setEsq(no);
             no.setFatorBalanceamento(0);
             no = temp1;
-        }else{
+        }
+        else{
             temp2 = temp1.getEsq();
-            temp1.setEsq(temp2.getEsq());
-            temp2.setDir(temp1);
+            
             no.setDir(temp2.getEsq());
+            temp1.setEsq(temp2.getDir());
+            temp2.setDir(temp1);
             temp2.setEsq(no);
 
             if(temp2.getFatorBalanceamento() == 1){
-                no.setFatorBalanceamento(-1);
+                no.setFatorBalanceamento(0);
+                temp1.setFatorBalanceamento(-1);
+            }else if(temp2.getFatorBalanceamento() == -1){
+                no.setFatorBalanceamento(1);
+                temp1.setFatorBalanceamento(0);
             }else{
                 no.setFatorBalanceamento(0);
-            }
-            if(temp2.getFatorBalanceamento() == -1){
-                temp1.setFatorBalanceamento(1);
-            }
-            else{
                 temp1.setFatorBalanceamento(0);
             }
-
+            
             no = temp2;
         }
         no.setFatorBalanceamento(0);
@@ -110,6 +111,7 @@ public class AVL {
             switch (no.getFatorBalanceamento()) {
                 case -1:
                     no.setFatorBalanceamento(0);
+                    this.balancear = false;
                     break;
 
                 case 0:
@@ -125,31 +127,34 @@ public class AVL {
 
     private NoAVL rotacaoDir(NoAVL no){
         NoAVL temp1, temp2;
-        temp1 = no.getDir();
+        temp1 = no.getEsq();
 
         if(temp1.getFatorBalanceamento() == 1){
             no.setEsq(temp1.getDir());
             temp1.setDir(no);
             no.setFatorBalanceamento(0);
             no = temp1;
-        }else{
-            temp2 = temp1.getDir();
-            temp1.setEsq(temp2.getEsq());
+        }
+        else{
+            temp2 = temp1.getDir(); 
+
+            temp1.setDir(temp2.getEsq()); 
+            no.setEsq(temp2.getDir()); 
             temp2.setEsq(temp1);
-            no.setEsq(temp2.getDir());
             temp2.setDir(no);
             
-            if(temp2.getFatorBalanceamento() == -1){
-                no.setFatorBalanceamento(1);
-            }else{
-                no.setFatorBalanceamento(0);
-            }
             if(temp2.getFatorBalanceamento() == 1){
-                temp1.setFatorBalanceamento(-1);
+                no.setFatorBalanceamento(-1);
+                temp1.setFatorBalanceamento(0);
+            }else if(temp2.getFatorBalanceamento() == -1){
+                no.setFatorBalanceamento(0);
+                temp1.setFatorBalanceamento(1);
             }
             else{
+                no.setFatorBalanceamento(0);
                 temp1.setFatorBalanceamento(0);
             }
+            
             no = temp2;
         }
         no.setFatorBalanceamento(0);
