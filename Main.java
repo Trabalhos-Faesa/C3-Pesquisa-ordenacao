@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import ABB.ABB;
+import Hashing.Hashing;
 import Heap.Heap;
 import QuickSort.QuickSort;
 import QuickSortInsercao.QuickSortInsercao;
@@ -123,23 +125,21 @@ public class Main {
         // realizarQuestao4(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt",nomes);
 
         // -------------Questão 6---------------------
-        {
-            /* TODO implementar questao 5 */}
-        realizarQuestao4(lista1kAlea, "ReservasOrganizadas/AVL/AVL1000alea.txt", nomes);
-        realizarQuestao4(lista1kOrd, "ReservasOrganizadas/AVL/AVL1000ord.txt", nomes);
-        realizarQuestao4(lista1kInv, "ReservasOrganizadas/AVL/AVL1000inv.txt", nomes);
+        realizarQuestao6(lista1kAlea, "ReservasOrganizadas/Hashing/Hashing1000alea.txt", nomes);
+        realizarQuestao6(lista1kOrd, "ReservasOrganizadas/Hashing/Hashing1000ord.txt", nomes);
+        realizarQuestao6(lista1kInv, "ReservasOrganizadas/Hashing/Hashing1000inv.txt", nomes);
 
-        realizarQuestao4(lista5kAlea, "ReservasOrganizadas/AVL/AVL5000alea.txt", nomes);
-        realizarQuestao4(lista5kOrd, "ReservasOrganizadas/AVL/AVL5000ord.txt", nomes);
-        realizarQuestao4(lista5kInv, "ReservasOrganizadas/AVL/AVL5000inv.txt", nomes);
+        realizarQuestao6(lista5kAlea, "ReservasOrganizadas/Hashing/Hashing5000alea.txt", nomes);
+        realizarQuestao6(lista5kOrd, "ReservasOrganizadas/Hashing/Hashing5000ord.txt", nomes);
+        realizarQuestao6(lista5kInv, "ReservasOrganizadas/Hashing/Hashing5000inv.txt", nomes);
 
-        // realizarQuestao4(lista10kAlea, "ReservasOrganizadas/AVL/AVL10000alea.txt", nomes);
-        // realizarQuestao4(lista10kOrd, "ReservasOrganizadas/AVL/AVL10000ord.txt", nomes);
-        // realizarQuestao4(lista10kInv, "ReservasOrganizadas/AVL/AVL10000inv.txt", nomes);
+        // realizarQuestao6(lista10kAlea, "ReservasOrganizadas/Hashing/Hashing10000alea.txt", nomes);
+        // realizarQuestao6(lista10kOrd, "ReservasOrganizadas/Hashing/Hashing10000ord.txt", nomes);
+        // realizarQuestao6(lista10kInv, "ReservasOrganizadas/Hashing/Hashing10000inv.txt", nomes);
 
-        // realizarQuestao4(lista50kAlea, "ReservasOrganizadas/AVL/AVL50000alea.txt", nomes);
-        // realizarQuestao4(lista50kOrd, "ReservasOrganizadas/AVL/AVL50000ord.txt", nomes);
-        // realizarQuestao4(lista50kInv, "ReservasOrganizadas/AVL/AVL50000inv.txt", nomes);
+        // realizarQuestao6(lista50kAlea, "ReservasOrganizadas/Hashing/Hashing50000alea.txt", nomes);
+        // realizarQuestao6(lista50kOrd, "ReservasOrganizadas/Hashing/Hashing50000ord.txt", nomes);
+        // realizarQuestao6(lista50kInv, "ReservasOrganizadas/Hashing/Hashing50000inv.txt", nomes);
 
     }
 
@@ -193,7 +193,7 @@ public class Main {
     }
 
     // função para escreve lista de reservas o arquivo para as questões de pesquisa
-    public static void writeSearcToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome)
+    public static void writeSearchResultToFile(String arquivoDestino, ArrayList<Reserva> reservas, String nome)
             throws IOException {
 
         Path path = Paths.get(arquivoDestino);
@@ -219,7 +219,7 @@ public class Main {
     }
 
     // variacao da função acima adaptada para as questoes de ordenaçao
-    public static void writeSortToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
+    public static void writeSortResultToFile(String arquivoDestino, ArrayList<Reserva> reservas) throws IOException {
         Path path = Paths.get(arquivoDestino);
         ArrayList<String> lines = new ArrayList<String>();
         lines.add("\n---------------------------");
@@ -255,7 +255,7 @@ public class Main {
 
     public static void principalQuestao1(Heap sorter, String caminhoDestino) {
         try {
-            writeSortToFile(caminhoDestino, sorter.ordenar());
+            writeSortResultToFile(caminhoDestino, sorter.ordenar());
         } catch (IOException e) {
 
         }
@@ -274,7 +274,7 @@ public class Main {
 
     public static void principalQuestao2(QuickSort sorter, String caminhoDestino) {
         try {
-            writeSortToFile(caminhoDestino, sorter.ordena());
+            writeSortResultToFile(caminhoDestino, sorter.ordena());
         } catch (IOException e) {
 
         }
@@ -294,7 +294,7 @@ public class Main {
         QuickSortInsercao sorter = new QuickSortInsercao(data);
         sorter.ordena();
         try {
-            writeSortToFile(caminhoDestino, sorter.getLista());
+            writeSortResultToFile(caminhoDestino, sorter.getLista());
         } catch (IOException e) {
 
         }
@@ -320,9 +320,9 @@ public class Main {
 
             try {
                 if (reservasCliente.size() > 0) {
-                    writeSearcToFile(caminhoDestino, reservasCliente, null);
+                    writeSearchResultToFile(caminhoDestino, reservasCliente, null);
                 } else {
-                    writeSearcToFile(caminhoDestino, null, cliente);
+                    writeSearchResultToFile(caminhoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
@@ -362,9 +362,9 @@ public class Main {
             reservasCliente = arvoreAVL.pesquisarNome(cliente);
             try {
                 if (reservasCliente.size() > 0) {// se encontrou reservas para o cliente escreve diretamente no arquivo
-                    writeSearcToFile(arquivoDestino, reservasCliente, null);
+                    writeSearchResultToFile(arquivoDestino, reservasCliente, null);
                 } else {// caso o cliente não tenha reservas escreve no arquivo que não encontrou
-                    writeSearcToFile(arquivoDestino, null, cliente);
+                    writeSearchResultToFile(arquivoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
@@ -384,10 +384,10 @@ public class Main {
 
     // ----------------------Questão 6-----------------------------
     public static void realizarQuestao6(ArrayList<Reserva> data, String caminhoDestino, ArrayList<String> nomesPesquisa) {
-        AVL arvoreAVL = montaAVL(data);
+        Hashing hash = montaHashing(data);
 
         for (int i = 0; i < 5; i++) {
-            principalQuestao6(caminhoDestino, nomesPesquisa, arvoreAVL);
+            principalQuestao6(caminhoDestino, nomesPesquisa, hash);
             if (i != 4) {
                 cleanFile(caminhoDestino);
             }
@@ -395,17 +395,17 @@ public class Main {
     }
 
     // metodo pricipal da questao 6
-    public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, AVL arvoreAVL) {
+    public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, Hashing hash) {
         ArrayList<Reserva> reservasCliente;
 
         for (String cliente : nomesPesquisa) {
-            reservasCliente = new ArrayList<>();
-            reservasCliente = arvoreAVL.pesquisarNome(cliente);
+            reservasCliente = parseToArrayList(hash.searchByName(cliente));
+            
             try {
                 if (reservasCliente.size() > 0) {// se encontrou reservas para o cliente escreve diretamente no arquivo
-                    writeSearcToFile(arquivoDestino, reservasCliente, null);
+                    writeSearchResultToFile(arquivoDestino, reservasCliente, null);
                 } else {// caso o cliente não tenha reservas escreve no arquivo que não encontrou
-                    writeSearcToFile(arquivoDestino, null, cliente);
+                    writeSearchResultToFile(arquivoDestino, null, cliente);
                 }
             } catch (IOException e) {
 
@@ -413,4 +413,25 @@ public class Main {
         }
     }
 
+    public static ArrayList<Reserva> parseToArrayList(LinkedList<Reserva> list) {
+       ArrayList<Reserva> arrayList = new ArrayList<>();
+
+        if(list != null){
+            for(Reserva r: list){
+                arrayList.add(r);
+            }
+        }
+        
+        return arrayList;
+    }
+
+    public static Hashing montaHashing(ArrayList<Reserva> reservas) {
+        Hashing hash = new Hashing(reservas.size());
+
+        for (Reserva reserva : reservas) {
+            hash.inserir(reserva);
+        }
+
+        return hash;
+    }
 }
