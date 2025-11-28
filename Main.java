@@ -18,6 +18,9 @@ import java.nio.file.StandardOpenOption;
 
 public class Main {
     public static void main(String[] args) {
+
+        //para rodar o codigo insira a linha de baixo no launch.json da sua IDE
+        //"vmArgs": "-Xmx2048m"
         ArrayList<Reserva> lista1kAlea = readAllReservas("reservas/Reserva1000alea.txt");
         ArrayList<Reserva> lista1kOrd = readAllReservas("reservas/Reserva1000ord.txt");
         ArrayList<Reserva> lista1kInv = readAllReservas("reservas/Reserva1000inv.txt");
