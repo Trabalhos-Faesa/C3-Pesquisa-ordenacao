@@ -1000,4 +1000,8 @@ Nome: WILLIAN QUEIROZ Reserva: R000769 Voo: V154 Data: 27/06/2024 Assento: 85B
 Nome: WILLIAN QUEIROZ MOURA Reserva: R000186 Voo: V230 Data: 30/06/2023 Assento: 54B
 Nome: WILLIAN VARGAS LOPES SANTOS Reserva: R000003 Voo: V911 Data: 08/11/2024 Assento: 185A
 Nome: WILLIAN VARGAS LOPES SANTOS Reserva: R000499 Voo: V987 Data: 07/11/2024 Assento: 124C
-Tempo total de execução (ms): 2
+
+
+
+-------------------Tempo Execução------------------
+Tempo total de execução (ms): 3

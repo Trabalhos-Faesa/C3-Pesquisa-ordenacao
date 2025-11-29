@@ -1793,3 +1793,8 @@ Total: 1 reserva(s) adicionada(s)
 ---------------------------
 Nome: IGOR LOPES
 Não tem reserva
+
+
+
+-------------------Tempo Execução------------------
+Tempo total de execução (ms): 88

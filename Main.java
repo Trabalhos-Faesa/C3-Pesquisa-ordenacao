@@ -429,6 +429,7 @@ public class Main {
     }
 
     public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, Hashing hash) {
+        long initialTime = System.currentTimeMillis(), finalTime;
         ArrayList<Reserva> reservasCliente;
         for (String cliente : nomesPesquisa) {
             reservasCliente = parseToArrayList(hash.searchByName(cliente));
@@ -443,6 +444,9 @@ public class Main {
 
             }
         }
+        finalTime = System.currentTimeMillis();
+        long totalTime = finalTime - initialTime;
+        writeOperationTimer(totalTime, arquivoDestino);
     }
     // converte uma linkedlist de reservas para arraylist de reservas, afim de utilizar o método de escrita em arquivo
     public static ArrayList<Reserva> parseToArrayList(LinkedList<Reserva> list) {

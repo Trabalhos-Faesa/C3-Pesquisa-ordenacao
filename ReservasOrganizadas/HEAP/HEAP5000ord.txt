@@ -5000,4 +5000,8 @@ Nome: WILLIAN SOUZA RANGEL Reserva: R004554 Voo: V844 Data: 19/01/2023 Assento: 
 Nome: WILLIAN VARGAS LOPES SANTOS Reserva: R000003 Voo: V911 Data: 08/11/2024 Assento: 185A
 Nome: WILLIAN VARGAS LOPES SANTOS Reserva: R000499 Voo: V987 Data: 07/11/2024 Assento: 124C
 Nome: WILLIAN VARGAS LOPES SANTOS Reserva: R004536 Voo: V289 Data: 18/04/2025 Assento: 135C
-Tempo total de execução (ms): 4
+
+
+
+-------------------Tempo Execução------------------
+Tempo total de execução (ms): 7

@@ -10000,4 +10000,8 @@ Nome: WILLIAN VIANNA Reserva: R008132 Voo: V161 Data: 19/09/2024 Assento: 92E
 Nome: WILLIAN VILELA Reserva: R008118 Voo: V195 Data: 08/12/2025 Assento: 170C
 Nome: WILLIAN VILELA Reserva: R008909 Voo: V545 Data: 08/02/2024 Assento: 15D
 Nome: WILLIAN VILELA Reserva: R009192 Voo: V697 Data: 06/12/2025 Assento: 137D
-Tempo total de execução (ms): 7
+
+
+
+-------------------Tempo Execução------------------
+Tempo total de execução (ms): 11
