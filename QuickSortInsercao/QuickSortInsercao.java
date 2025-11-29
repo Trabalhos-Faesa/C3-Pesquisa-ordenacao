@@ -21,8 +21,8 @@ public class QuickSortInsercao {
     }
 
     public void ordena(int esq, int dir) {
-        if ((dir - esq) == 20) {
-            ordenaInsercao();
+        if ((dir - esq) <= 20) {
+            ordenaInsercao(esq, dir);
         }
         int i = esq, j = dir;
         Reserva pivo, temp;
@@ -63,11 +63,11 @@ public class QuickSortInsercao {
         return comparacao;
     }
 
-    public void ordenaInsercao() {
+    public void ordenaInsercao(int esq, int dir) {
         int i, j;
         Reserva temp;
 
-        for (i = 1; i < this.lista.size(); i++) {
+        for (i = esq; i <= dir; i++) {
             temp = this.lista.get(i);
             j = i - 1;
             while ((j >= 0) && (comparaElementos(temp, temp) > 0)) {
