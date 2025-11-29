@@ -384,7 +384,6 @@ public class Main {
         writeOperationTimer(totalTime, arquivoDestino);
     }
 
-    // metodo pricipal da questao 5
     public static void principalQuestao5(String arquivoDestino, ArrayList<String> nomesPesquisa, AVL arvoreAVL) {
         ArrayList<Reserva> reservasCliente;
 
@@ -429,7 +428,6 @@ public class Main {
         writeOperationTimer(totalTime, arquivoDestino);
     }
 
-    // metodo pricipal da questao 6
     public static void principalQuestao6(String arquivoDestino, ArrayList<String> nomesPesquisa, Hashing hash) {
         ArrayList<Reserva> reservasCliente;
         for (String cliente : nomesPesquisa) {
@@ -446,7 +444,7 @@ public class Main {
             }
         }
     }
-
+    // converte uma linkedlist de reservas para arraylist de reservas, afim de utilizar o método de escrita em arquivo
     public static ArrayList<Reserva> parseToArrayList(LinkedList<Reserva> list) {
        ArrayList<Reserva> arrayList = new ArrayList<>();
 
